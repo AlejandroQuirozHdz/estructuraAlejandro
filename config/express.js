@@ -69,4 +69,17 @@ module.exports=function(){
     next();
   });
 
+  // Load the signature (jwt)
+  app.set('secret', config.secret);
+
+  // Set the application view engine and 'views' folder
+  app.set('views', __dirname + '/../public/index');
+  app.set('view engine', 'html');
+
+  // Load routing files
+  require(config.routesFile+'hello.server.routers.js')(app);
+
+  app.use(express.static(__dirname + '/../public'));
+  
+  return app;
 }

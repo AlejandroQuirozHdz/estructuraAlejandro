@@ -1,3 +1,5 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 const express=require('./config/express');
 const http=require('http');
 
@@ -11,6 +13,6 @@ http.createServer(app,(request,response)=>{
     // 2. Write the announced text to the body of the page
    
     response.end();
-}).listen(7878);
+}).listen(7878 ,()=> console.log('Server on port 7878'));
 
 module.exports = app;
